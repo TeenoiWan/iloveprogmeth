@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneControl" >
+    <children>
+        <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <items>
+                <Button fx:id="portScannerBtn" onAction="#switchToPortScanner" mnemonicParsing="false"  text="Port Scanner">
+                    <tooltip>
+                        <Tooltip text="Scan network ports" />
+                    </tooltip>
+                </Button>
+
+                <Separator orientation="VERTICAL" />
+
+                <Button fx:id="encryptionBtn" mnemonicParsing="false"  text="Encryption">
+                    <tooltip>
+                        <Tooltip text="Encrypt or decrypt files" />
+                    </tooltip>
+                </Button>
+            </items>
+        </ToolBar>
+        <AnchorPane fx:id="contentArea"/>
+    </children>
+</VBox>
