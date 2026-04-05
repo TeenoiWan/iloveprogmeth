@@ -1,5 +1,6 @@
-package service.portScanner;
+package util.portScanner.services;
 import logic.superClass.Tool;
+import util.portScanner.dataType.ScanResult;
 
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -10,13 +11,14 @@ import java.util.concurrent.Future;
 
 public class PortScannerService extends Tool {
 
+    private String target;
     private int startPort;
     private int endPort;
     private ArrayList<ScanResult> scanResults;
 
     //constructor
     public PortScannerService(String target,int startPort,int endPort){
-        super(target);
+        this.target = target    ;
         this.setStartPort(startPort);
         this.setEndPort(endPort);
     }

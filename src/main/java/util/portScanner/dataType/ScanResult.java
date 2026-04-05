@@ -1,4 +1,4 @@
-package service.portScanner;
+package util.portScanner.dataType;
 
 public class ScanResult {
     private int port;

@@ -19,7 +19,7 @@
 
                 <Separator orientation="VERTICAL" />
 
-                <Button fx:id="encryptionBtn" mnemonicParsing="false"  text="Encryption">
+                <Button fx:id="encryptionBtn" onAction="#switchToEncryption" mnemonicParsing="false"  text="Encryption">
                     <tooltip>
                         <Tooltip text="Encrypt or decrypt files" />
                     </tooltip>

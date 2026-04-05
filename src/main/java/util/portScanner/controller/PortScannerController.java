@@ -1,12 +1,15 @@
-package service.portScanner;
+package util.portScanner.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import logic.superClass.BaseController;
+import util.portScanner.services.PortScannerService;
+import util.portScanner.dataType.ScanResult;
 
 import java.util.ArrayList;
 
 
-public class PortScannerController {
+public class PortScannerController extends BaseController {
 
 
     //  Input fields
@@ -36,6 +39,7 @@ public class PortScannerController {
 
             if (ip.isEmpty() || !(ip.matches("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")|| ip.equals("localhost")) ) {
                 //
+
                 showError("Invalid IP Address", "Please enter a valid IP or hostname.");
                 return;
             }
@@ -102,15 +106,10 @@ public class PortScannerController {
         }
     }
 
-    private void showError(String title,String text){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(text);
-        alert.show();
-    }
     /// /////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+    //Filter
     @FXML private void showAll() {
         resultTable.getItems().setAll(allResults);
     }

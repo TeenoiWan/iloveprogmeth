@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="util.encryption.controller.EncryptionController">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <children>
+      <VBox prefHeight="200.0" prefWidth="280.0" spacing="20.0">
+         <children>
+            <VBox prefWidth="290.0" spacing="10.0">
+               <children>
+                  <Label text="Enter text to be Encrypted" />
+                  <HBox prefHeight="0.0" prefWidth="280.0" spacing="10.0">
+                     <children>
+                        <fx:define><ToggleGroup fx:id="encryptModeGroup"/></fx:define>
+                        <RadioButton fx:id="encryptTextModeBtn" mnemonicParsing="false" toggleGroup="$encryptModeGroup" text="text" selected="true"/>
+                        <RadioButton fx:id="encryptFileModeBtn" mnemonicParsing="false" toggleGroup="$encryptModeGroup" text="file" />
+                     </children>
+                  </HBox>
+                  <StackPane fx:id="encryptInputStack" alignment="CENTER_LEFT" prefHeight="75.0">
+                     <VBox fx:id="encryptTextPane">
+                        <Label text="Text Input"/>
+                        <TextArea fx:id="encryptInput"/>
+                     </VBox>
+                     <VBox fx:id="encryptFilePane" visible="false" managed="false">
+                        <Label text="File Input"/>
+                        <HBox spacing="10">
+                           <TextField fx:id="encryptFilePath"/>
+                           <Button text="Browse" onAction="#handleEncryptSelectFile"/>
+                        </HBox>
+                     </VBox>
+                  </StackPane>
+               </children>
+            </VBox>
+            <VBox prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label text="Password / Key" />
+                  <PasswordField fx:id="encryptKey" />
+                  <Button fx:id="encryptButton" onAction="#handleEncrypt" mnemonicParsing="false" text="Encrypt"
+                          style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+               </children>
+            </VBox>
+            <VBox prefWidth="290.0" spacing="10.0">
+               <children>
+                  <Label text="Encrypted Output" />
+                  <TextArea fx:id="encryptOutput" editable="false" prefHeight="75.0" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox prefWidth="280.0" spacing="20.0">
+         <children>
+            <VBox prefWidth="280.0" spacing="10.0">
+               <children>
+                  <Label text="Enter text to be Decrypt" />
+                  <HBox prefHeight="0.0" prefWidth="280.0" spacing="10.0">
+                     <children>
+                        <fx:define><ToggleGroup fx:id="decryptModeGroup"/></fx:define>
+                        <RadioButton fx:id="decryptTextModeBtn" mnemonicParsing="false" toggleGroup="$decryptModeGroup" text="text" selected="true"/>
+                        <RadioButton fx:id="decryptFileModeBtn" mnemonicParsing="false" toggleGroup="$decryptModeGroup" text="file" />
+                     </children>
+                  </HBox>
+                  <StackPane fx:id="decryptInputStack" alignment="CENTER_LEFT" prefHeight="75.0">
+                     <VBox fx:id="decryptTextPane">
+                        <Label text="Text Input"/>
+                        <TextArea fx:id="decryptInput"/>
+                     </VBox>
+                     <VBox fx:id="decryptFilePane" visible="false" managed="false">
+                        <Label text="File Input"/>
+                        <HBox spacing="10">
+                           <TextField fx:id="decryptFilePath"/>
+                           <Button text="Browse" onAction="#handleDecryptSelectFile"/>
+                        </HBox>
+                     </VBox>
+                  </StackPane>
+               </children>
+            </VBox>
+            <VBox prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label text="Password / Key" />
+                  <PasswordField fx:id="decryptKey" />
+                  <Button fx:id="decryptButton" onAction="#handleDecrypt" mnemonicParsing="false" text="Decrypt"
+                          style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+               </children>
+            </VBox>
+            <VBox prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label text="Decrypted Text" />
+                  <TextArea fx:id="decryptOutput" editable="false" prefHeight="75.0" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

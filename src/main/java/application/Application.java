@@ -1,5 +1,5 @@
 package application;
-//fx:controller="service.portScanner.PortScannerController"
+//fx:controller="service.portScanner.controller.PortScannerController"
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.fxml.FXML;

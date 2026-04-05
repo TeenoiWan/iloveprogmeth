@@ -23,4 +23,9 @@ public class SceneControl {
         Parent root = FXMLLoader.load(getClass().getResource("/portscanner/PortScannerTest.fxml"));
         contentArea.getChildren().setAll(root);
     }
+
+    public void switchToEncryption(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/encryption/Encryption.fxml"));
+        contentArea.getChildren().setAll(root);
+    }
 }
