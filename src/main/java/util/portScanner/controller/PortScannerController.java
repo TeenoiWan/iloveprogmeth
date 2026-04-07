@@ -83,7 +83,7 @@ public class PortScannerController extends BaseController {
                 closeLabel.setText("Closed: " +
                         allResults.stream().filter(r -> r.getStatus().equals("CLOSED")).count());
 
-                filteredLabel.setText("No Response: " +
+                filteredLabel.setText("Filtered: " +
                         allResults.stream().filter(r -> r.getStatus().equals("FILTERED")).count());
             });
 

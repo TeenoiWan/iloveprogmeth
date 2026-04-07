@@ -127,7 +127,7 @@ public class EncryptionController extends BaseController {
                     return;
                 }
 
-                String outputPath = filePath + ".enc";
+                String outputPath = filePath.replace(".enc$","");
                 FileDecryptionService service = new FileDecryptionService(filePath,outputPath,key);
 
                 service.execute();

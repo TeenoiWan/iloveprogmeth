@@ -8,10 +8,6 @@ import javafx.scene.control.TextField;
 
 public class Application extends javafx.application.Application {
 
-   @FXML private TextField scannerIP;
-    @FXML private TextField scannerStartPort;
-    @FXML private TextField scannerEndPort;
-
     @Override
     public void start(Stage stage) throws Exception {
 
