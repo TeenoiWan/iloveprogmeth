@@ -4,8 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
+import logic.interfaces.Resettable;
 import logic.superClass.BaseController;
+import logic.superClass.InputModeSwitcher;
 
 import javafx.scene.control.*;
 import util.encryption.services.fileServices.FileDecryptionService;
@@ -13,9 +14,7 @@ import util.encryption.services.fileServices.FileEncryptionService;
 import util.encryption.services.textServices.DecryptionService;
 import util.encryption.services.textServices.EncryptionService;
 
-import java.io.File;
-
-public class EncryptionController extends BaseController {
+public class EncryptionController extends BaseController implements Resettable {
 
     //Input Fields
     @FXML private TextArea encryptInput;
@@ -126,8 +125,15 @@ public class EncryptionController extends BaseController {
                     showError("Invalid File","Please select a file");
                     return;
                 }
-
-                String outputPath = filePath.replace(".enc$","");
+                String outputPath;
+                if (filePath.endsWith(".enc")) {
+                    String original = filePath.replaceAll("\\.enc$", "");
+                    String ext = original.substring(original.lastIndexOf("."));
+                    String nameWithoutExt = original.substring(0, original.lastIndexOf("."));
+                    outputPath = nameWithoutExt + ".decrypted" + ext;
+                } else {
+                    outputPath = filePath + ".decrypted";
+                }
                 FileDecryptionService service = new FileDecryptionService(filePath,outputPath,key);
 
                 service.execute();
@@ -184,28 +190,42 @@ public class EncryptionController extends BaseController {
 
     }
 
-
     //Browse
-    private String  SelectFile(){
-        try{
-            FileChooser chooser = new FileChooser();
-            File file = chooser.showOpenDialog(null);
-
-            if(file!=null){
-                return file.getAbsolutePath();
-            }
-            return null;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @FXML public void handleEncryptSelectFile(){
-        encryptFilePath.setText(SelectFile());
+        encryptFilePath.setText(selectFile());
     }
     @FXML public void handleDecryptSelectFile(){
-        decryptFilePath.setText(SelectFile());
+        decryptFilePath.setText(selectFile());
     }
 
+    //reset btn
+    @Override
+    public void reset(){
+        resetDecrypt();
+        resetEncrypt();
+    }
 
+    private void resetEncrypt() {
+        encryptInput.clear();
+        encryptFilePath.clear();
+        encryptKey.clear();
+        encryptOutput.clear();
+        encryptTextModeBtn.setSelected(true);
+        encryptController.switchToTextMode();
+    }
+
+    private void resetDecrypt() {
+        decryptInput.clear();
+        decryptFilePath.clear();
+        decryptKey.clear();
+        decryptOutput.clear();
+        decryptTextModeBtn.setSelected(true);
+        decryptController.switchToTextMode();
+    }
+    @FXML
+    public void handleEncryptReset(){
+        resetEncrypt();
+    }
+    @FXML
+    public void handleDecryptReset() {resetDecrypt();}
 }

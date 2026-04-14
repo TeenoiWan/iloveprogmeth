@@ -5,6 +5,7 @@ import util.encryption.services.CipherCore;
 import util.encryption.services.KeyService;
 
 import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class DecryptionService extends Tool {
@@ -29,7 +30,7 @@ public class DecryptionService extends Tool {
 
             byte[] decrypted = cipherCore.decrypt(combined,key);
 
-            decryptedText = new String(decrypted);
+            decryptedText = new String(decrypted, StandardCharsets.UTF_8);
 
         } catch (Exception e) {
             throw new RuntimeException("Decryption failed",e);

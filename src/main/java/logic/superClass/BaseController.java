@@ -1,6 +1,9 @@
 package logic.superClass;
 
 import javafx.scene.control.Alert;
+import javafx.stage.FileChooser;
+
+import java.io.File;
 
 public class BaseController {
 
@@ -18,5 +21,19 @@ public class BaseController {
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.show();
+    }
+
+    protected String  selectFile(){
+        try{
+            FileChooser chooser = new FileChooser();
+            File file = chooser.showOpenDialog(null);
+
+            if(file!=null){
+                return file.getAbsolutePath();
+            }
+            return null;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

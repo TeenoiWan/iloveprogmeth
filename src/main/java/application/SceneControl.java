@@ -28,4 +28,9 @@ public class SceneControl {
         Parent root = FXMLLoader.load(getClass().getResource("/encryption/Encryption.fxml"));
         contentArea.getChildren().setAll(root);
     }
+
+    public void switchToHash(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/hashgenerator/HashGenerator.fxml"));
+        contentArea.getChildren().setAll(root);
+    }
 }

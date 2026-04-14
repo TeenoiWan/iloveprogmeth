@@ -12,10 +12,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="util.encryption.controller.EncryptionController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="util.encryption.controller.EncryptionController">
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
+   <HBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" spacing="20.0">
    <children>
       <VBox prefHeight="200.0" prefWidth="280.0" spacing="20.0">
          <children>
@@ -29,7 +30,7 @@
                         <RadioButton fx:id="encryptFileModeBtn" mnemonicParsing="false" toggleGroup="$encryptModeGroup" text="file" />
                      </children>
                   </HBox>
-                  <StackPane fx:id="encryptInputStack" alignment="CENTER_LEFT" prefHeight="75.0">
+                  <StackPane fx:id="encryptInputStack" alignment="CENTER_LEFT" prefHeight="50.0">
                      <VBox fx:id="encryptTextPane">
                         <Label text="Text Input"/>
                         <TextArea fx:id="encryptInput"/>
@@ -50,12 +51,13 @@
                   <PasswordField fx:id="encryptKey" />
                   <Button fx:id="encryptButton" onAction="#handleEncrypt" mnemonicParsing="false" text="Encrypt"
                           style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                  <Button text="Reset" onAction="#handleEncryptReset"/>
                </children>
             </VBox>
             <VBox prefWidth="290.0" spacing="10.0">
                <children>
                   <Label text="Encrypted Output" />
-                  <TextArea fx:id="encryptOutput" editable="false" prefHeight="75.0" />
+                  <TextArea fx:id="encryptOutput" editable="false" prefHeight="50.0" />
                </children>
             </VBox>
          </children>
@@ -72,7 +74,7 @@
                         <RadioButton fx:id="decryptFileModeBtn" mnemonicParsing="false" toggleGroup="$decryptModeGroup" text="file" />
                      </children>
                   </HBox>
-                  <StackPane fx:id="decryptInputStack" alignment="CENTER_LEFT" prefHeight="75.0">
+                  <StackPane fx:id="decryptInputStack" alignment="CENTER_LEFT" prefHeight="50.0">
                      <VBox fx:id="decryptTextPane">
                         <Label text="Text Input"/>
                         <TextArea fx:id="decryptInput"/>
@@ -93,15 +95,22 @@
                   <PasswordField fx:id="decryptKey" />
                   <Button fx:id="decryptButton" onAction="#handleDecrypt" mnemonicParsing="false" text="Decrypt"
                           style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                  <Button text="Reset" onAction="#handleDecryptReset" />
                </children>
             </VBox>
             <VBox prefWidth="100.0" spacing="10.0">
                <children>
                   <Label text="Decrypted Text" />
-                  <TextArea fx:id="decryptOutput" editable="false" prefHeight="75.0" />
+                  <TextArea fx:id="decryptOutput" editable="false" prefHeight="50.0" />
                </children>
             </VBox>
          </children>
       </VBox>
    </children>
 </HBox>
+   <HBox alignment="CENTER_RIGHT">
+      <Button text="Clear All" onAction="#reset"
+              style="-fx-background-color: #f44336; -fx-text-fill: white;"
+              HBox.hgrow="ALWAYS"/>
+   </HBox>
+</VBox>

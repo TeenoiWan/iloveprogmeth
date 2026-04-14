@@ -24,6 +24,14 @@
                         <Tooltip text="Encrypt or decrypt files" />
                     </tooltip>
                 </Button>
+
+                <Separator orientation="VERTICAL" />
+
+                <Button fx:id="hashBtn" onAction="#switchToHash" mnemonicParsing="false"  text="Hash Generator">
+                    <tooltip>
+                        <Tooltip text="Generate hash" />
+                    </tooltip>
+                </Button>
             </items>
         </ToolBar>
         <AnchorPane fx:id="contentArea"/>

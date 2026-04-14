@@ -2,6 +2,7 @@ package util.portScanner.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import logic.interfaces.Resettable;
 import logic.superClass.BaseController;
 import util.portScanner.services.PortScannerService;
 import util.portScanner.dataType.ScanResult;
@@ -9,7 +10,7 @@ import util.portScanner.dataType.ScanResult;
 import java.util.ArrayList;
 
 
-public class PortScannerController extends BaseController {
+public class PortScannerController extends BaseController implements Resettable {
 
 
     //  Input fields
@@ -62,7 +63,6 @@ public class PortScannerController extends BaseController {
                     PortScannerService scanner = new PortScannerService(ip, start, end);
                     scanner.execute();
                     allResults = scanner.getScanResults();
-                    resultTable.getItems().setAll(allResults);
                     return scanner.getScanResults();
                 }
             };
@@ -153,6 +153,29 @@ public class PortScannerController extends BaseController {
         );
 
 
+    }
+
+    @Override
+    public void reset(){
+        scannerIP.clear();
+        scannerStartPort.clear();
+        scannerEndPort.clear();
+
+        resultTable.getItems().clear();
+
+        statusLabel.setText("");
+
+        allLabel.setText("");
+        openLabel.setText("");
+        closeLabel.setText("");
+        filteredLabel.setText("");
+
+        allResults = new ArrayList<>();
+    }
+
+    @FXML
+    public void handleReset(){
+        reset();
     }
 }
 

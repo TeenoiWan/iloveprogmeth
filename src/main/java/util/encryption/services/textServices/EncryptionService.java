@@ -5,6 +5,7 @@ import util.encryption.services.CipherCore;
 import util.encryption.services.KeyService;
 
 import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class EncryptionService extends Tool {
@@ -26,7 +27,7 @@ public class EncryptionService extends Tool {
         try {
             SecretKey key = keyService.generateKey(password);
 
-            byte[] encrypted = cipherCore.encrypt(text.getBytes(),key);
+            byte[] encrypted = cipherCore.encrypt(text.getBytes(StandardCharsets.UTF_8),key);
 
             encryptedText = Base64.getEncoder().encodeToString(encrypted);
 

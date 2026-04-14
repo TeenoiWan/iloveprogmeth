@@ -1,4 +1,4 @@
-package util.encryption.controller;
+package logic.superClass;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
@@ -16,7 +16,7 @@ public class InputModeSwitcher {
         this.filePane = filePane;
     }
 
-    protected void switchToTextMode() {
+    public void switchToTextMode() {
         textPane.setVisible(true);
         textPane.setManaged(true);
 
@@ -24,7 +24,7 @@ public class InputModeSwitcher {
         filePane.setManaged(false);
     }
 
-    protected void switchToFileMode() {
+    public void switchToFileMode() {
         textPane.setVisible(false);
         textPane.setManaged(false);
 
